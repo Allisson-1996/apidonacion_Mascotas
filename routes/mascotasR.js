@@ -1,0 +1,13 @@
+import express from 'express';
+const route = express.Router();//gestionar las rutas
+import  mascotasController from '../controllers/mascotas.js';
+import {verificarToken } from '../helpers/autenticacion.js';
+
+
+route.post('/',mascotasController.create);
+route.get('/:id',mascotasController.getOne);
+route.get('/',mascotasController.getAll);
+route.put('/:id',mascotasController.update);
+route.delete('/:id',mascotasController.delete);
+
+export default route;
