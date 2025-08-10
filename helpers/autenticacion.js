@@ -6,7 +6,6 @@ export function generarToken(email) {
 }
 
 export function verificarToken(req, res, next) {
-
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {
@@ -20,5 +19,4 @@ export function verificarToken(req, res, next) {
     } catch (e) {
         res.status(401).json({ error: 'Token no válido' });
     }
-
 }

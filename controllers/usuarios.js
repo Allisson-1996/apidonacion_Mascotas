@@ -1,12 +1,8 @@
 import { generarToken } from '../helpers/autenticacion.js';
 import usuariosModel from '../models/usuarios.js';
-import bcrypt from 'bcrypt';
-
+import bcrypt from 'bcryptjs';
 
 class usuariosController {
-    constructor() {
-    }
-
     async register(req, res) {
         try {
             const { email, nombre, telefono, clave } = req.body;
@@ -17,7 +13,6 @@ class usuariosController {
             }
 
             const claveEncryptada = await bcrypt.hash(clave, 10);
-
 
             const data = await usuariosModel.create({
                 email,
@@ -54,7 +49,6 @@ class usuariosController {
 
     async profile(req, res) {
         try {
-            console.log(req.emailConectado);
             const data = await usuariosModel.getOne({ email: req.emailConectado });
             res.status(201).json(data);
         } catch (e) {

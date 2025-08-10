@@ -5,7 +5,6 @@ import { verificarToken } from '../helpers/autenticacion.js';
 
 route.post('/register', usuariosController.register);
 route.post('/login', usuariosController.login);
-route.get('/profile', verificarToken, usuariosController.profile)
-
+route.get('/profile', verificarToken, usuariosController.profile);
 
 export default route;
